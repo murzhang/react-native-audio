@@ -1,0 +1,95 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "git+https://github.com/jsierles/react-native-audio.git",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "git+https://github.com/jsierles/react-native-audio.git",
+        "spec": "git+https://github.com/jsierles/react-native-audio.git",
+        "type": "hosted",
+        "hosted": {
+          "type": "github",
+          "ssh": "git@github.com:jsierles/react-native-audio.git",
+          "sshUrl": "git+ssh://git@github.com/jsierles/react-native-audio.git",
+          "httpsUrl": "git+https://github.com/jsierles/react-native-audio.git",
+          "gitUrl": "git://github.com/jsierles/react-native-audio.git",
+          "shortcut": "github:jsierles/react-native-audio",
+          "directUrl": "https://raw.githubusercontent.com/jsierles/react-native-audio/master/package.json"
+        }
+      },
+      "d:\\USEABCV2\\SourceCode\\YSApp"
+    ]
+  ],
+  "_from": "git+https://github.com/jsierles/react-native-audio.git",
+  "_id": "react-native-audio@3.2.2",
+  "_inCache": true,
+  "_location": "/react-native-audio",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "git+https://github.com/jsierles/react-native-audio.git",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "git+https://github.com/jsierles/react-native-audio.git",
+    "spec": "git+https://github.com/jsierles/react-native-audio.git",
+    "type": "hosted",
+    "hosted": {
+      "type": "github",
+      "ssh": "git@github.com:jsierles/react-native-audio.git",
+      "sshUrl": "git+ssh://git@github.com/jsierles/react-native-audio.git",
+      "httpsUrl": "git+https://github.com/jsierles/react-native-audio.git",
+      "gitUrl": "git://github.com/jsierles/react-native-audio.git",
+      "shortcut": "github:jsierles/react-native-audio",
+      "directUrl": "https://raw.githubusercontent.com/jsierles/react-native-audio/master/package.json"
+    }
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/jsierles/react-native-audio.git#583c2b3113cdf2f39cd8570f485c79138610781b",
+  "_shasum": "a62758df7dc911fae9b4a34a14c6572d524a9c46",
+  "_shrinkwrap": null,
+  "_spec": "git+https://github.com/jsierles/react-native-audio.git",
+  "_where": "d:\\USEABCV2\\SourceCode\\YSApp",
+  "author": {
+    "name": "Joshua Sierles",
+    "email": "joshua@diluvia.net",
+    "url": "https://github.com/jsierles"
+  },
+  "bugs": {
+    "url": "https://github.com/jsierles/react-native-audio/issues"
+  },
+  "dependencies": {},
+  "description": "React Native extension for recording audio",
+  "devDependencies": {},
+  "files": [
+    "ios/AudioRecorderManager.m",
+    "ios/AudioRecorderManager.h",
+    "ios/RNAudio.xcodeproj",
+    "README.md",
+    "LICENSE",
+    "index.js",
+    "android/*"
+  ],
+  "gitHead": "583c2b3113cdf2f39cd8570f485c79138610781b",
+  "homepage": "https://github.com/jsierles/react-native-audio#readme",
+  "keywords": [
+    "react-native",
+    "audio",
+    "record"
+  ],
+  "main": "index.js",
+  "name": "react-native-audio",
+  "nativePackage": true,
+  "optionalDependencies": {},
+  "readme": "Record audio in iOS or Android React Native apps.\r\n\r\n## BREAKING CHANGES\r\n\r\nFor React Native >= 0.40, use v3.1.0 and up.\r\nFor React Native <= 0.39, use v3.0.0 or lower.\r\n\r\nv3.x removed playback support in favor of using more mature libraries like [react-native-sound](https://github.com/zmxv/react-native-sound). If you need to play\r\nfrom the network, please submit a PR to that project or try `react-native-video`.\r\n\r\n### Installation\r\n\r\nInstall the npm package and link it to your project:\r\n\r\n```\r\nnpm install react-native-audio --save\r\nreact-native link react-native-audio\r\n```\r\n\r\nOn *iOS* you need to add a usage description to `Info.plist`:\r\n\r\n```\r\n<key>NSMicrophoneUsageDescription</key>\r\n<string>This sample uses the microphone to record your speech and convert it to text.</string>\r\n```\r\n\r\nOn *Android* you need to add a permission to `AndroidManifest.xml`:\r\n\r\n```\r\n<uses-permission android:name=\"android.permission.RECORD_AUDIO\" />\r\n```\r\n\r\n### Running the Sample App\r\n\r\nIn the `AudioExample` directory:\r\n\r\n```\r\nnpm install\r\nreact-native run-ios\r\nreact-native run-android\r\n```\r\n\r\n### Usage\r\n\r\nTo record in AAC format, at 22050 KHz in low quality mono:\r\n\r\n```\r\nimport {AudioRecorder, AudioUtils} from 'react-native-audio';\r\nlet audioPath = AudioUtils.DocumentDirectoryPath + '/test.aac';\r\n\r\nAudioRecorder.prepareRecordingAtPath(audioPath, {\r\n  SampleRate: 22050,\r\n  Channels: 1,\r\n  AudioQuality: \"Low\",\r\n  AudioEncoding: \"aac\"\r\n});\r\n```\r\n\r\n#### Cross-platform options\r\n\r\n```\r\nSampleRate: int\r\nChannels: int\r\nAudioQuality: string\r\nAudioEncoding: string\r\n```\r\n\r\nEncodings supported on iOS: `lpcm, ima4, aac, MAC3, MAC6, ulaw, alaw, mp1, mp2, alac, amr`\r\nEncodings supported on Android: `aac, aac_eld, amr_nb, amr_wb, he_aac, vorbis`\r\n\r\n#### iOS-only fields\r\n\r\nThe `MeteringEnabled` boolean to enable audio metering.\r\n\r\n#### Android-only fields\r\n\r\nAudioEncodingBitRate: int\r\nOutputFormat: string, `mpeg_4, aac_adts, amr_nb, amr_wb, three_gpp, webm`\r\n\r\nSee [the example](https://github.com/jsierles/react-native-audio/blob/master/AudioExample/index.ios.js) for more details. For playing audio check out [React Native Sound](https://github.com/zmxv/react-native-sound)\r\n\r\nMP3 recording is *not supported* since the underlying platforms do not support it.\r\n\r\nThanks to Brent Vatne, Johannes Lumpe, Kureev Alexey, Matthew Hartman and Rakan Nimer for their assistance.\r\n\r\nProgress tracking code borrowed from https://github.com/brentvatne/react-native-video.\r\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/jsierles/react-native-audio.git"
+  },
+  "version": "3.2.2"
+}
